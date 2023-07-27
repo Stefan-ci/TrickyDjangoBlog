@@ -1,0 +1,7 @@
+    {% load static cache %}
+
+    {% cache 600 sscript_tags_cache %}
+        <script src="{% static 'js/bootstrap.bundle-5.3.1.min.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+        <script defer src="{% static 'js/toastr.min.js' %}"></script>
+    {% endcache %}

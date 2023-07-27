@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr" dir="ltr" prefix="og: https://ogp.me/ns#" xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#391d04">
+    <meta name="color-scheme" content="light" />
+    <meta name="msapplication-navbutton-color" content="#391d04">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="{{ site_name }}">
+    <meta name="application-name" content="{{ site_name }}">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title> {% block title %}{% endblock title %} </title>
+
+    <meta property="fb:app_id" content="">
+    <meta name="apple-itunes-app" content="">
+    <meta name="hostname" content="{{ request.get_host }}">
+    <meta name="expected-hostname" content="{{ request.get_host }}">
+    
+    {% block locale_language %}
+        <meta name="language" content="fr">
+        <meta name="locale" content="fr_CI">
+        <meta property="og:locale" content="fr_CI">
+    {% endblock locale_language %}
+
+    {% block robots %}
+        <meta name="robots" content="index,follow" />
+    {% endblock robots %}
+
+    {% block seo %}{% endblock seo %}
+
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+    {% block style %}
+        {% include "public/includes/styles.html" %}
+    {% endblock style %}
+
+    {% block favicon %}
+        {% include "public/includes/favicon.html" %}
+    {% endblock favicon %}
+
+    {% block required_js %}
+        <script src="{% static 'js/htmx-1.9.4.min.js' %}" defer></script>
+        <script src="{% static 'js/jquery-3.7.0.min.js' %}"></script>
+    {% endblock required_js %}
+
+    {% block extra_head %}{% endblock extra_head %}
+</head>
+<body class="pt-5 pb-3">
+    {% block navbar %}
+        {% include "public/includes/navbar.html" %}
+        <div class="mb-4"></div>
+    {% endblock navbar %}
+
+    {% block content %}{% endblock content %}
+    {% block extra_content %}{% endblock extra_content %}
+
+    {% block footer %}
+        {% include "public/includes/footer.html" %}
+    {% endblock footer %}
+
+    <span class="scroll-top mb-2">
+        <i class="fa fa-arrow-up"></i>
+    </span>
+
+    {% block scripts %}
+        {% include "public/includes/scripts.html" %}
+    {% endblock scripts %}
+    {% block extra_scripts %}{% endblock extra_scripts %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <script>
+                $(function() {
+                    toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "newestOnTop": true,
+                        "progressBar": true,
+                        "positionClass": "toast-bottom-center",
+                        "preventDuplicates": false,
+                        "onclick": true,
+                        "showDuration": "15000",
+                        "hideDuration": "15000",
+                        "timeOut": "15000",
+                        "extendedTimeOut": "15000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                    toastr["{{ message.tags }}"](`{{ message }}`);
+                });
+            </script>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

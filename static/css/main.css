@@ -1,0 +1,58 @@
+:root {
+    --warning: #ffb240 !important;
+    --info: #11cdef !important;
+    --error: #f5365c !important;
+    --success: #2dce89 !important;
+    --debug: #ddf509 !important;
+    --pink: #ff0090 !important;
+    --primary: #391d04 !important;
+    --purple: #6f42c1 !important;
+    --orange: #fb8c00 !important;
+}
+
+html,
+body {
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    letter-spacing: 0.5px !important;
+    line-height: 25px !important;
+    scroll-behavior: smooth;
+    background-color: rgba(250, 250, 250, .5) !important;
+}
+
+.htmx-indicator {
+    opacity: 0;
+    transition: opacity 500ms ease-in;
+}
+
+.htmx-request .htmx-indicator {
+    opacity: 1
+}
+
+.htmx-request.htmx-indicator {
+    opacity: 1
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 1%;
+    right: 2%;
+    cursor: pointer;
+    z-index: 100;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: .5s
+}
+
+.showBtn {
+    opacity: 1;
+    transform: translateY(0)
+}
+
+.scroll-top i {
+    padding: 1rem;
+    color: #fff;
+    border-radius: 50%;
+    background: #3a3973 !important;
+    font-size: 1rem;
+}
